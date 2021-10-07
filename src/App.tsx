@@ -4,11 +4,14 @@ import { api } from "src/api/country";
 import { Appbar } from "src/components/Appbar/Appbar";
 import { GoogleMap } from "src/components/GoogleMap/GoogleMap";
 import { PopulationChart } from "src/components/PopulationChart/PopulationChart";
+import { CountryInterface } from "src/interface/CountryInterface";
 
 function App() {
-  const [allCountries, setAllCountries] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [selectedCountries, setSelectedCountries] = useState([]);
+  const [allCountries, setAllCountries] = useState<CountryInterface[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [selectedCountries, setSelectedCountries] = useState<
+    CountryInterface[]
+  >([]);
 
   useEffect(() => {
     setIsLoading(true);

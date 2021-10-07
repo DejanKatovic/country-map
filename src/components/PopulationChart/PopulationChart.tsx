@@ -1,9 +1,10 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Chart from "react-apexcharts";
+import { CountryInterface } from "src/interface/CountryInterface";
 
 interface PopulationChartProps {
-  selectedCountries: any[];
+  selectedCountries: CountryInterface[];
 }
 
 export function PopulationChart({ selectedCountries }: PopulationChartProps) {

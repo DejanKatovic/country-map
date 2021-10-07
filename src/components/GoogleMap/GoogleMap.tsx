@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Room as RoomIcon } from "@mui/icons-material";
 import GoogleMapReact from "google-map-react";
+import { CountryInterface } from "src/interface/CountryInterface";
 
 interface LocationPinProps {
   lat: number;
@@ -28,7 +29,7 @@ const LocationPin = ({ text }: LocationPinProps) => {
 };
 
 interface GoogleMapProps {
-  selectedCountries: any[];
+  selectedCountries: CountryInterface[];
 }
 
 export function GoogleMap({

@@ -9,6 +9,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
+import { CountryInterface } from "src/interface/CountryInterface";
 
 const SearchTextField = styled(TextField)({
   "& input": {
@@ -33,8 +34,8 @@ const SearchTextField = styled(TextField)({
 });
 
 interface AppbarProps {
-  allCountries: any[];
-  setSelectedCountries: (value: any) => void;
+  allCountries: CountryInterface[];
+  setSelectedCountries: (value: CountryInterface[]) => void;
 }
 
 export function Appbar({
@@ -69,7 +70,9 @@ export function Appbar({
         <Autocomplete
           id="search_field"
           freeSolo
-          options={allCountries.map((country: any) => country.name)}
+          options={allCountries.map(
+            (country: CountryInterface) => country.name
+          )}
           renderInput={(params) => (
             <SearchTextField
               {...params}

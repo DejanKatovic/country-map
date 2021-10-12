@@ -9,6 +9,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
+import debounce from "lodash/debounce";
 import { CountryInterface } from "src/interface/CountryInterface";
 
 const SearchTextField = styled(TextField)({
@@ -42,20 +43,18 @@ export function Appbar({
   allCountries,
   setSelectedCountries,
 }: AppbarProps): React.ReactElement {
-  const handleKeyDown = useCallback(
-    (event) => {
-      if (event.key === "Enter") {
-        if (event.target.value.trim() === "") {
-          setSelectedCountries([]);
-        } else {
-          setSelectedCountries(
-            allCountries.filter((country) =>
-              country.name
-                .toLowerCase()
-                .includes(event.target.value.trim().toLowerCase())
-            )
-          );
-        }
+  const handleChange = useCallback(
+    (event: any, newValue: string | null) => {
+      if (!newValue) {
+        setSelectedCountries([]);
+      } else if (newValue?.trim() === "") {
+        setSelectedCountries([]);
+      } else {
+        setSelectedCountries(
+          allCountries.filter((country) =>
+            country.name.toLowerCase().includes(newValue?.trim().toLowerCase())
+          )
+        );
       }
     },
     [allCountries, setSelectedCountries]
@@ -90,7 +89,7 @@ export function Appbar({
           )}
           size="small"
           sx={{ width: "200px" }}
-          onKeyDown={handleKeyDown}
+          onChange={handleChange}
         />
       </Toolbar>
     </AppBar>

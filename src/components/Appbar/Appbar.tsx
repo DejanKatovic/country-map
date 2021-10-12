@@ -9,7 +9,6 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
-import debounce from "lodash/debounce";
 import { CountryInterface } from "src/interface/CountryInterface";
 
 const SearchTextField = styled(TextField)({
